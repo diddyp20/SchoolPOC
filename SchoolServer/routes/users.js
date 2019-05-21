@@ -55,11 +55,16 @@ router.delete('/user/:id', function(req, res, next){
 });
 
 //update user
+//firstName":"John","lastName":"Doe","roleID":"","username":"jonh1","password":"school"
 router.put('/user/:id', function(req, res, next){
     var game = req.body;
     var updGame = {};
     if(game.username){
         updGame.username = game.username;
+        updGame.firstName = game.firstName;
+        updGame.lastName = game.lastName;
+        updGame.roleID = game.roleID;
+        updGame.password = game.password;
     }
 
     if(!updGame){
