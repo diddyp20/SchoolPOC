@@ -5,7 +5,7 @@ var mongojs = require('mongojs');
 var db = mongojs('school', ['users']);
 
 //get all users
-router.get('/', function(req, res, next){
+router.get('/users', function(req, res, next){
     db.users.find(function(err, games){
         if(err){
             res.send(err);
@@ -15,7 +15,7 @@ router.get('/', function(req, res, next){
 });
 
 //get one user
-router.get('/:id', function(req, res, next){
+router.get('/user/:id', function(req, res, next){
     db.users.findOne({_id: mongojs.ObjectID(req.params.id)},function(err, game){
         if(err){
             res.send(err);
@@ -65,6 +65,7 @@ router.put('/user/:id', function(req, res, next){
         updGame.lastName = game.lastName;
         updGame.roleID = game.roleID;
         updGame.password = game.password;
+        updGame.isAdmin = game.isAdmin;
     }
 
     if(!updGame){
