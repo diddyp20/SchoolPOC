@@ -13,7 +13,8 @@ import { User } from '../../shared/user.model';
 export class LoginComponent implements OnInit {
 
   constructor(private userService : UserService) { }
-  newUser : User;
+  newUser : User[];
+  loggedUser: boolean;
 
   ngOnInit() {
     this.resetForm();
@@ -38,7 +39,13 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(form:NgForm){
-    console.log('This is successfully signed in! ' + this.userService.userSelected.username +' and '+ this.userService.userSelected.password);
+    this.userService.getEmployee(this.userService.userSelected)
+      .subscribe((response: Array<any>)=>{
+        if(response.filter(name => name.password == this.userService.userSelected.password )){
+          this.loggedUser = true;
+          this.userService.users = response;
+        }
+      });
   }
 
 }

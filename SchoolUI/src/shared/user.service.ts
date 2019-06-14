@@ -21,4 +21,7 @@ export class UserService {
     console.log('before calling the API, the request is' + user.firstName);
     return this.http.post(this.baseURL + 'user', user);
   }
+  getEmployee(user: User){
+    return this.http.get(this.baseURL + 'username'+ `/${user.username}`);
+  }
 }

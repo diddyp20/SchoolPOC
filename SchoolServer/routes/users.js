@@ -15,8 +15,8 @@ router.get('/users', function(req, res, next){
 });
 
 //get one user
-router.get('/user/:id', function(req, res, next){
-    db.users.findOne({_id: mongojs.ObjectID(req.params.id)},function(err, game){
+router.get('/user/:ids', function(req, res, next){
+    db.users.findOne({_id: mongojs.ObjectID(req.params.ids)},function(err, game){
         if(err){
             res.send(err);
         }
@@ -24,6 +24,15 @@ router.get('/user/:id', function(req, res, next){
     });
 });
 
+//get a user by username
+router.get('/username/:username', function(req, res, next){
+    db.users.find({username: req.params.username},function(err, game){
+        if(err){
+            res.send(err);
+        }
+        res.json(game);
+    });
+});
 //save user
 router.post('/user', function(req, res, next){
     var game = req.body;
