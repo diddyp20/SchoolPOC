@@ -1,35 +1,34 @@
 <div class="row">
   <div class="container-fluid">
-    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto" *ngIf="!loggedUser">
-      <div class="card card-signin my-5">
-        <div class="card-body ">
-          <h5 class="card-title text-center">BndNetworks, Inc.</h5>
-            <form #schoolForm="ngForm" (ngSubmit)="onSubmit(schoolForm)">
-              <img class="mb-4" src="../../assets/blisjhtw6fz21.jpg" alt="" width="72" height="72">
-              <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-              <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="userService.userSelected._id">
-              <label for="username" class="sr-only">Username</label>
-              <input type="text" name="username" #_id="ngModel" class="form-control" placeholder="Username" required
-                autofocus [(ngModel)]="userService.userSelected.username">
-              <label for="inputPassword" class="sr-only">Password</label>
-              <input type="password" name="inputPassword" #_id="ngModel" class="form-control mt-1"
-                placeholder="Password" required [(ngModel)]="userService.userSelected.password">
-              <div class="checkbox mb-3 mt-1">
-                <label>
-                  <input type="checkbox" value="remember-me"> Remember me
-                </label>
-              </div>
-              <button class="btn btn-primary btn-block btn-lg" type="submit">Sign in</button>
-              <p class="mt-5 mb-3 text-muted">&copy; 2017-2019</p>
-            </form>
-          </div>
+  <div class="col-sm-9 col-md-7 col-lg-5 mx-auto" *ngIf="!loggedUser">
+    <div class="card card-signin my-5">
+      <div class="card-body ">
+        <h5 class="card-title text-center">BndNetworks, Inc.</h5>
+        <div class="text-center">
+          <form #schoolForm="ngForm" (ngSubmit)="onSubmit(schoolForm)">
+            <img class="mb-4" src="../../assets/Arsenal-15-16-Third-Kit (8).jpg" alt="" width="72" height="72">
+            <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+            <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="userService.userSelected._id">
+            <label for="username" class="sr-only">Username</label>
+            <input type="text" name="username" #_id="ngModel" class="form-control" placeholder="Username" required autofocus [(ngModel)]="userService.userSelected.username">
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input type="password" name="inputPassword" #_id="ngModel" class="form-control mt-1" placeholder="Password" required [(ngModel)]="userService.userSelected.password">
+            <div class="checkbox mb-3 mt-1">
+              <label> 
+                <input type="checkbox" value="remember-me"> Remember me
+              </label>
+            </div>
+            <button class="btn btn-primary btn-block btn-lg" type="submit">Sign in</button>
+            <p class="mt-5 mb-3 text-muted">&copy; 2017-2019</p>
+          </form>
         </div>
       </div>
     </div>
-    <div *ngIf="loggedUser">
+  </div>
+  <div *ngIf="loggedUser">
       <div *ngFor="let user of userService.users">
-        <p>{{user.username}} is logged IN!</p>
+          <p>{{user.username}} is logged IN!</p>
       </div>
     </div>
-  </div>
+</div>
 </div>
