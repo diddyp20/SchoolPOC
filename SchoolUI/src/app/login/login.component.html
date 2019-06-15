@@ -28,6 +28,7 @@
   <div *ngIf="loggedUser">
       <div *ngFor="let user of userService.users">
           <p>{{user.username}} is logged IN!</p>
+          <app-admin-home></app-admin-home>
       </div>
     </div>
 </div>
