@@ -25,11 +25,11 @@
       </div>
     </div>
   </div>
-  <div *ngIf="loggedUser">
-      <div *ngFor="let user of userService.users">
-          <p>{{user.username}} is logged IN!</p>
-          <app-admin-home></app-admin-home>
-      </div>
+  <div *ngIf="loggedUser && userService.userSelected.isAdmin">
+          <app-admin-home [newUser]="userService.userSelected"></app-admin-home>
+    </div>
+    <div *ngIf="loggedUser && !userService.userSelected.isAdmin">
+      <app-teacher-home [newUser]="userService.userSelected"></app-teacher-home>
     </div>
 </div>
 </div>

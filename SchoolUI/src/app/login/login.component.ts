@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 import { UserService } from '../../shared/user.service';
@@ -13,7 +13,7 @@ import { User } from '../../shared/user.model';
 export class LoginComponent implements OnInit {
 
   constructor(private userService : UserService) { }
-  newUser : User[];
+  @Input() newUser : User[];
   loggedUser: boolean;
 
   ngOnInit() {
@@ -21,7 +21,6 @@ export class LoginComponent implements OnInit {
   }
 
   resetForm(form?: NgForm){
-    console.log('this is a click event');
      this.userService.userSelected = {
        _id :'',
       username: '',
@@ -29,7 +28,8 @@ export class LoginComponent implements OnInit {
       lastName: '',
       roleID: '',
       password: '',
-      isAdmin: true
+      isAdmin: true,
+      loginCount: 0
 
     };
 
@@ -43,7 +43,8 @@ export class LoginComponent implements OnInit {
       .subscribe((response: Array<any>)=>{
         if(response.filter(name => name.password == this.userService.userSelected.password )){
           this.loggedUser = true;
-          this.userService.users = response;
+          this.userService.userSelected = response[0];
+          this.newUser = response;
         }
       });
   }

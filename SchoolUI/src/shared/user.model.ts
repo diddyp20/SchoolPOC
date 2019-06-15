@@ -6,4 +6,5 @@ export class User {
     roleID: string;
     password: string;
     isAdmin: boolean;
+    loginCount: number;
 }
