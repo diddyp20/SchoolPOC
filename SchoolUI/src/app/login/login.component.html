@@ -9,6 +9,7 @@
             <img class="mb-4" src="../../assets/Arsenal-15-16-Third-Kit (8).jpg" alt="" width="72" height="72">
             <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
             <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="userService.userSelected._id">
+            <div class="text-danger font-italic" *ngIf="incorrectPassword">The username or password you entered is incorrect.</div>
             <label for="username" class="sr-only">Username</label>
             <input type="text" name="username" #_id="ngModel" class="form-control" placeholder="Username" required autofocus [(ngModel)]="userService.userSelected.username">
             <label for="inputPassword" class="sr-only">Password</label>

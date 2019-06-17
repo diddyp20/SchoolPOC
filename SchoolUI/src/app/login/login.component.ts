@@ -15,6 +15,8 @@ export class LoginComponent implements OnInit {
   constructor(private userService : UserService) { }
   @Input() newUser : User[];
   loggedUser: boolean;
+  incorrectPassword: boolean;
+  isAdmin: boolean;
 
   ngOnInit() {
     this.resetForm();
@@ -30,21 +32,20 @@ export class LoginComponent implements OnInit {
       password: '',
       isAdmin: true,
       loginCount: 0
-
     };
-
-   // this.userService.postEmployee( this.userService.userSelected)
-     // .subscribe((response)=>{});
-
   }
 
   onSubmit(form:NgForm){
     this.userService.getEmployee(this.userService.userSelected)
       .subscribe((response: Array<any>)=>{
-        if(response.filter(name => name.password == this.userService.userSelected.password )){
+        var record = response.filter(rec => rec.password == this.userService.userSelected.password);
+        if(record.length > 0){
           this.loggedUser = true;
           this.userService.userSelected = response[0];
           this.newUser = response;
+        }else{
+          this.incorrectPassword = true;
+          this.resetForm();
         }
       });
   }
