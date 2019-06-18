@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 import { UserService } from '../../shared/user.service';
@@ -13,37 +13,49 @@ import { User } from '../../shared/user.model';
 export class LoginComponent implements OnInit {
 
   constructor(private userService : UserService) { }
-  newUser : User[];
+  @Input() newUser : User[];
   loggedUser: boolean;
+  incorrectPassword: boolean;
+  isAdmin: boolean;
 
   ngOnInit() {
     this.resetForm();
   }
 
   resetForm(form?: NgForm){
-    console.log('this is a click event');
      this.userService.userSelected = {
        _id :'',
       username: '',
       firstName: '',
       lastName: '',
-      roleID: '',
+      role: '',
       password: '',
-      isAdmin: true
-
+      isAdmin: true,
+      loginCount: 0,
+      dob: new Date(),
+      city: '',
+      classAssigned: '',
+      email: '',
+      emerName:'',
+      emerPhone:'',
+      pob:'',
+      salary: 0,
+      telephone:'',
+      town:''
     };
-
-   // this.userService.postEmployee( this.userService.userSelected)
-     // .subscribe((response)=>{});
-
   }
 
   onSubmit(form:NgForm){
     this.userService.getEmployee(this.userService.userSelected)
       .subscribe((response: Array<any>)=>{
-        if(response.filter(name => name.password == this.userService.userSelected.password )){
+        var record = response.filter(rec => rec.password == this.userService.userSelected.password);
+        if(record.length > 0){
           this.loggedUser = true;
-          this.userService.users = response;
+          this.userService.userSelected = response[0];
+          this.newUser = response;
+        }else{
+          this.incorrectPassword = true;
+          this.resetForm();
         }
       });
   }
