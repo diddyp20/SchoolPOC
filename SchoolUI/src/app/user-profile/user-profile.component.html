@@ -10,18 +10,20 @@
 
     <div class="row">
       <div class="col-md-8 order-md-1">
-        <form class="needs-validation" novalidate>
+        <form #profileForm="ngForm" (ngSubmit)="onSubmit(profileForm)" class="needs-validation" novalidate>
           <div class="row">
+              <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="userService.userSelected._id">
             <div class="col-md-6 mb-3">
               <label for="firstName">First name</label>
-              <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+              <!--  <input type="text" name="username" #_id="ngModel" class="form-control" placeholder="Username" required autofocus [(ngModel)]="userService.userSelected.username">-->
+              <input type="text" class="form-control" #_id="ngModel" placeholder="" name="firstName" required [(ngModel)]="userService.userSelected.firstName">
               <div class="invalid-feedback">
                 Valid first name is required.
               </div>
             </div>
             <div class="col-md-6 mb-3">
               <label for="lastName">Last name</label>
-              <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+              <input type="text" class="form-control" #_id="ngModel" placeholder="" name="lastName" required [(ngModel)]="userService.userSelected.lastName">
               <div class="invalid-feedback">
                 Valid last name is required.
               </div>
@@ -31,14 +33,14 @@
           <div class="row">
             <div class="col-md-6 mb-3">
               <label for="dob">Date Of Birth</label>
-              <input type="date" class="form-control" id="dob" placeholder="12/12/1900">
+              <input type="date" class="form-control" #_id="ngModel" name="dob" placeholder="12/12/1900" [(ngModel)]="userService.userSelected.dob">
               <div class="invalid-feedback">
                 Please enter a valid date of birth.
               </div>
             </div>
             <div class="col-md-6 mb-3">
               <label for="pob">Place Of Birth</label>
-              <input type="text" class="form-control" id="pob" placeholder="Yaounde">
+              <input type="text" class="form-control" #_id="ngModel" name="pob" placeholder="Yaounde" [(ngModel)]="userService.userSelected.pob">
               <div class="invalid-feedback">
                 Please enter a valid place of birth.
               </div>
@@ -47,7 +49,7 @@
 
           <div class="mb-3">
             <label for="telephone">Telephone</label>
-            <input type="text" class="form-control" id="telephone" placeholder="999-99-99-99">
+            <input type="text" class="form-control" #_id="ngModel" name="telephone" placeholder="999-99-99-99" [(ngModel)]="userService.userSelected.telephone">
             <div class="invalid-feedback">
               Please enter a valid telephone Number.
             </div>
@@ -55,7 +57,7 @@
 
           <div class="mb-3">
             <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" placeholder="you@example.com">
+            <input type="email" class="form-control" #_id="ngModel"  name="email" placeholder="you@example.com" [(ngModel)]="userService.userSelected.email">
             <div class="invalid-feedback">
               Please enter a valid email.
             </div>
@@ -63,7 +65,7 @@
           <div class="row">
             <div class="col-md-6 mb-3">
               <label for="quartier">Town</label>
-              <input type="text" class="form-control" id="quartier" placeholder="Bonamoussadi">
+              <input type="text" class="form-control" #_id="ngModel" name="quartier" placeholder="Bonamoussadi" [(ngModel)]="userService.userSelected.town">
               <div class="invalid-feedback">
                 Please enter a valid town.
               </div>
@@ -71,7 +73,7 @@
 
             <div class="col-md-6 mb-3">
               <label for="city">City</label>
-              <input type="text" class="form-control" id="city" placeholder="Douala">
+              <input type="text" class="form-control" #_id="ngModel" name="city" placeholder="Douala" [(ngModel)]="userService.userSelected.city">
               <div class="invalid-feedback">
                 Please enter a valid city.
               </div>
@@ -81,14 +83,14 @@
           <div class="row">
             <div class="col-md-6 mb-3">
               <label for="emerName">Emergency Contact</label>
-              <input type="text" class="form-control" id="emerName">
+              <input type="text" class="form-control" #_id="ngModel" name="emerName" [(ngModel)]="userService.userSelected.emerName">
               <div class="invalid-feedback">
                 Please enter a valid Name.
               </div>
             </div>
             <div class="col-md-6 mb-3">
               <label for="emerPhone">Telephone</label>
-              <input type="text" class="form-control" id="emerPhone" placeholder="999-99-99-99">
+              <input type="text" class="form-control" #_id="ngModel" name="emerPhone" placeholder="999-99-99-99" [(ngModel)]="userService.userSelected.emerPhone">
               <div class="invalid-feedback">
                 Please enter a valid place of birth.
               </div>
@@ -103,7 +105,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text">@</span>
               </div>
-              <input type="text" class="form-control" id="username" placeholder="Username" required>
+              <input type="text" class="form-control" #_id="ngModel" name="username" placeholder="Username" required [(ngModel)]="userService.userSelected.username">
               <div class="invalid-feedback" style="width: 100%;">
                 Your username is required.
               </div>
@@ -112,7 +114,7 @@
 
           <div class="mb-3">
             <label for="curPassword">Current Password</label>
-            <input type="password" class="form-control" id="curPassword" required>
+            <input type="password" class="form-control" #_id="ngModel" name="curPassword" required [(ngModel)]="userService.userSelected.password">
             <div class="invalid-feedback">
               Please enter your current password.
             </div>
@@ -121,11 +123,11 @@
           <div class="row">
             <div class="col-md-6 mb-3">
               <label for="newPassword">New Password</label>
-              <input type="password" class="form-control" id="newPassword" required>
+              <input type="password" class="form-control" #_id="ngModel" name="newPassword" required [(ngModel)]="userService.userSelected.password">
             </div>
             <div class="col-md-6 mb-3">
               <label for="newPassword2">Confirm Password</label>
-              <input type="password" class="form-control" id="newPassword2" required>
+              <input type="password" class="form-control" #_id="ngModel" name="newPassword2" required [(ngModel)]="userService.userSelected.password">
             </div>
           </div>
 

@@ -25,7 +25,7 @@
 <div *ngIf="userService.userSelected.isAdmin && userService.userSelected.loginCount == 0">
 <div class="pt-5 mt-5" >
   Welcome {{newUser.firstName}} {{newUser.lastName}} to BNDnetworks! You are an Admin
-  <app-user-profile></app-user-profile>
+  <app-user-profile [newUser]="userService.userSelected"></app-user-profile>
 </div>
 </div>
 <!--<app-user-profile></app-user-profile>-->

@@ -28,10 +28,20 @@ export class LoginComponent implements OnInit {
       username: '',
       firstName: '',
       lastName: '',
-      roleID: '',
+      role: '',
       password: '',
       isAdmin: true,
-      loginCount: 0
+      loginCount: 0,
+      dob: new Date(),
+      city: '',
+      classAssigned: '',
+      email: '',
+      emerName:'',
+      emerPhone:'',
+      pob:'',
+      salary: 0,
+      telephone:'',
+      town:''
     };
   }
 
