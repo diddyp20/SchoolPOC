@@ -17,4 +17,5 @@ export class User {
     isAdmin: boolean;
     loginCount: number;
     classAssigned: string;
+    firstConnect: boolean;
 }
