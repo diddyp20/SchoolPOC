@@ -78,7 +78,7 @@ router.put('/user/:id', function(req, res, next){
         updUser.isAdmin = user.isAdmin;
         updUser.dob = user.dob;
         updUser.pob = user.pob;
-        updUser.telephone = user.telophone;
+        updUser.telephone = user.telephone;
         updUser.email = user.email;
         updUser.emerName = user.emerName;
         updUser.emerPhone = user.emerPhone;
@@ -86,7 +86,8 @@ router.put('/user/:id', function(req, res, next){
         updUser.city = user.city;
         updUser.salary = user.salary;
         updUser.loginCount = user.loginCount;
-        updUser.classAssigned = user.classAssigned;
+        updUser.classAssigned = user.classAssigned; 
+        updUser.firstConnect = user.firstConnect;
     }
 
     if(!updUser){
