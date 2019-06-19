@@ -1,6 +1,10 @@
-<div *ngIf="userService.userSelected.loginCount==0">
+<div *ngIf="userService.userSelected.firstConnect">
 <div class="pt-5 mt-5" >
     Welcome {{newUser.firstName}} {{newUser.lastName}} to BNDnetworks! You are not an admin
     <app-user-profile [newUser]="userService.userSelected"></app-user-profile>
   </div>
 </div>
+<div *ngIf="!userService.userSelected.firstConnect">
+  <p>this is not your first connection</p>
+</div>
+

@@ -12,24 +12,27 @@ import { User } from '../../shared/user.model';
 })
 export class UserProfileComponent implements OnInit {
 
-  constructor(private userService : UserService) { }
+  constructor(private userService: UserService) { }
   @Input() newUser: User;
 
   ngOnInit() {
-  this.userService.userSelected = this.newUser;
+    this.userService.userSelected = this.newUser;
+    console.log(this.userService.userSelected);
 
   }
 
-  onSubmit(form:NgForm){
+  onSubmit(form: NgForm) {
     console.log('user updated!');
     console.log(this.userService.userSelected);
     //update user -- set loginCOunt
-    this.userService.userSelected.loginCount += 1;
+    if (this.userService.userSelected.firstConnect) {
+      this.userService.userSelected.firstConnect = false;
+    }
     this.userService.updateEmployee(this.userService.userSelected)
-      .subscribe(response =>{
+      .subscribe(response => {
         console.log('user successfully updated');
       });
-    
+
   }
 
 }

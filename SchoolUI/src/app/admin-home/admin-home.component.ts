@@ -17,7 +17,8 @@ export class AdminHomeComponent implements OnInit {
     this.userService.userSelected = this.newUser;
     //this.isAdmin = this.newUser[0].isAdmin;
    // this.loginCount = this.newUser[0].loginCount;
-    console.log(this.userService.userSelected);
+    //console.log(this.userService.userSelected);
+    //console.log(this.newUser);
   }
 
 }
