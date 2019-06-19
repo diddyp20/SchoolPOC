@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
       lastName: '',
       role: '',
       password: '',
-      isAdmin: true,
+      isAdmin: null,
       loginCount: 0,
       dob: new Date(),
       city: '',
@@ -41,7 +41,8 @@ export class LoginComponent implements OnInit {
       pob:'',
       salary: 0,
       telephone:'',
-      town:''
+      town:'',
+      firstConnect: null
     };
   }
 
