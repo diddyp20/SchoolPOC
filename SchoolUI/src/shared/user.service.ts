@@ -24,4 +24,8 @@ export class UserService {
   getEmployee(user: User){
     return this.http.get(this.baseURL + 'username'+ `/${user.username}`);
   }
+  updateEmployee(user:User){
+    return this.http.put(this.baseURL + 'user' + `/${user._id}`, user);
+  }
+
 }

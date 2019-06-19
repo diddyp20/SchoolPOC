@@ -18,13 +18,18 @@ export class UserProfileComponent implements OnInit {
   ngOnInit() {
   this.userService.userSelected = this.newUser;
 
-  console.log(this.userService.userSelected);
   }
 
   onSubmit(form:NgForm){
     console.log('user updated!');
     console.log(this.userService.userSelected);
-    //update user
+    //update user -- set loginCOunt
+    this.userService.userSelected.loginCount += 1;
+    this.userService.updateEmployee(this.userService.userSelected)
+      .subscribe(response =>{
+        console.log('user successfully updated');
+      });
+    
   }
 
 }

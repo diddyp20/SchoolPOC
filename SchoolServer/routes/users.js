@@ -66,49 +66,45 @@ router.delete('/user/:id', function(req, res, next){
 //update user
 //firstName":"John","lastName":"Doe","roleID":"","username":"jonh1","password":"school"
 router.put('/user/:id', function(req, res, next){
-    var game = req.body;
-    var updGame = {};
-    if(game.username){
-        updGame.username = game.username;
-        updGame.firstName = game.firstName;
-        updGame.lastName = game.lastName;
-        updGame.roleID = game.roleID;
-        updGame.password = game.password;
-        updGame.isAdmin = game.isAdmin;
+    var user = req.body;
+    var updUser = {};
+
+    if(user.username){
+        updUser.username = user.username;
+        updUser.firstName = user.firstName;
+        updUser.lastName = user.lastName;
+        updUser.role = user.role;
+        updUser.password = user.password;
+        updUser.isAdmin = user.isAdmin;
+        updUser.dob = user.dob;
+        updUser.pob = user.pob;
+        updUser.telephone = user.telophone;
+        updUser.email = user.email;
+        updUser.emerName = user.emerName;
+        updUser.emerPhone = user.emerPhone;
+        updUser.town = user.town;
+        updUser.city = user.city;
+        updUser.salary = user.salary;
+        updUser.loginCount = user.loginCount;
+        updUser.classAssigned = user.classAssigned;
     }
 
-    if(!updGame){
+    if(!updUser){
         res.status(400);
         res.json({
             "error": "Bad Data"
         });
     } else {
-        db.users.update({_id: mongojs.ObjectID(req.params.id)},updGame, {},  function(err, game){
+        db.users.update({_id: mongojs.ObjectID(req.params.id)},updUser, {},  function(err, user){
             if(err){
                 res.send(err);
             }
-            res.json(game);
+            console.log('User correctly updated');
+            res.json(user);
         });
 
     }
    
 });
-/*   _id: string;
-    username: string;
-    password: string;
-    firstName: string;
-    lastName: string;
-    dob: Date;
-    pob: string;
-    telephone: string;
-    email: string;
-    emerName: string;
-    emerPhone: string;
-    town: string;
-    city: string;
-    salary: number;
-    role: string;
-    isAdmin: boolean;
-    loginCount: number;
-    classAssigned: string;*/
+
 module.exports = router;
