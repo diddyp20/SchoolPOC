@@ -15,9 +15,9 @@ export class AdminHomeComponent implements OnInit {
   @Input() newUser: User;
   ngOnInit() {
     this.userService.userSelected = this.newUser;
+    console.log('this is the admin data');
     //this.isAdmin = this.newUser[0].isAdmin;
    // this.loginCount = this.newUser[0].loginCount;
-    //console.log(this.userService.userSelected);
     //console.log(this.newUser);
   }
 

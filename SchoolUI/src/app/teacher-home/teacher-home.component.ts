@@ -16,7 +16,7 @@ export class TeacherHomeComponent implements OnInit {
 
   ngOnInit() {
     this.userService.userSelected = this.newUser;
-    console.log(this.userService.userSelected);
+    console.log('teacher page');
   }
 
 }

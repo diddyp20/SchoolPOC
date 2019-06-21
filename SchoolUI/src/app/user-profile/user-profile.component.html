@@ -1,4 +1,4 @@
-<div class="bg-light">
+<div class="bg-light" *ngIf="!isUpdated">
 
   <div class="container">
     <div class="py-1 ">
@@ -134,13 +134,7 @@
           <hr class="mb-4">
           <button class="btn btn-primary btn-lg btn-block" type="submit">Update Profile</button>
         </form>
-        <!-- Return to Admin home or non admin-->
-        <div *ngIf="userService.userSelected.isAdmin">
-            <app-admin-home></app-admin-home>
-        </div>
-        <div *ngIf="!userService.userSelected.isAdmin">
-            <app-teacher-home></app-teacher-home>
-        </div>
+      
       </div>
     </div>
 
@@ -153,4 +147,11 @@
       </ul>
     </footer>
   </div>
+</div>
+  <!-- Return to Admin home or non admin-->
+  <div *ngIf="isUpdated && isAdmin">
+    <app-admin-home [newUser]="userService.userSelected"></app-admin-home>
+</div>
+<div *ngIf="isUpdated && !isAdmin">
+    <app-teacher-home [newUser]="userService.userSelected"></app-teacher-home>
 </div>

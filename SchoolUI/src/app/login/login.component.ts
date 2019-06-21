@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
   @Input() newUser : User[];
   loggedUser: boolean;
   incorrectPassword: boolean;
+  isFirstConnexion: boolean;
   isAdmin: boolean;
 
   ngOnInit() {
@@ -54,6 +55,8 @@ export class LoginComponent implements OnInit {
           this.loggedUser = true;
           this.userService.userSelected = response[0];
           this.newUser = response;
+          this.isFirstConnexion = this.userService.userSelected.firstConnect;
+          this.isAdmin = this.userService.userSelected.isAdmin;
         }else{
           this.incorrectPassword = true;
           this.resetForm();

@@ -26,10 +26,13 @@
       </div>
     </div>
   </div>
-  <div *ngIf="loggedUser && userService.userSelected.isAdmin">
-          <app-admin-home [newUser]="userService.userSelected"></app-admin-home>
+  <div *ngIf="loggedUser && isFirstConnexion">
+          <app-user-profile [newUser]="userService.userSelected"></app-user-profile>
     </div>
-    <div *ngIf="loggedUser && !userService.userSelected.isAdmin">
+    <div *ngIf="loggedUser && !isFirstConnexion && isAdmin">
+      <app-admin-home [newUser]="userService.userSelected"></app-admin-home>
+    </div>
+    <div *ngIf="loggedUser && !isFirstConnexion && !isAdmin">
       <app-teacher-home [newUser]="userService.userSelected"></app-teacher-home>
     </div>
 </div>
