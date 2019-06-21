@@ -44,6 +44,7 @@ export class LoginComponent implements OnInit {
       telephone:'',
       town:'',
       firstConnect: null
+      // I love you Sylvie <3
     };
   }
 
