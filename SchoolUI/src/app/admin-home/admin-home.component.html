@@ -1,4 +1,4 @@
- <!--<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
   <a class="navbar-brand" href="#">BNDnetworks</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
     aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,13 +21,79 @@
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
   </div>
-</nav> -->
-<div *ngIf="userService.userSelected.firstConnect">
-  <div class="pt-5 mt-5">
-    Welcome {{newUser.firstName}} {{newUser.lastName}} to BNDnetworks! You are an Admin
-    <app-user-profile [newUser]="userService.userSelected"></app-user-profile>
+</nav>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3 order-md-1 pt-5 mt-5">
+      <p>I will be putting the menu here</p>
+    </div>
+    <div class="col-md-3 order-md-3 pt-5 mt-5">
+      <p>I will be putting the menu here</p>
+    </div>
+    <div class="col-md-6 order-md-2">
+      <!-- will be putting content here-->
+      <div *ngIf="isCreateUser">
+        <div class="pt-5 mt-5">
+          <h2>Create New User</h2>
+          <p class="lead">Please use this form to create a new user.</p>
+          <div class="card">
+            <div class="card-header">
+              <h4 class="mb-0">Create New User</h4>
+            </div>
+            <div class="card-body">
+              <form #createUser="ngForm" (ngSubmit)="onSubmit(createUser)" class="needs-validation" novalidate>
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label for="telephone">First Name</label>
+                    <input type="text" class="form-control" #_id="ngModel" name="telephone" placeholder="999-99-99-99"
+                      [(ngModel)]="userService.userSelected.telephone">
+                    <div class="invalid-feedback">
+                      Please enter a valid telephone Number.
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="telephone">Last Name</label>
+                    <input type="text" class="form-control" #_id="ngModel" name="telephone" placeholder="999-99-99-99"
+                      [(ngModel)]="userService.userSelected.telephone">
+                    <div class="invalid-feedback">
+                      Please enter a valid telephone Number.
+                    </div>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="telephone">Telephone</label>
+                  <input type="text" class="form-control" #_id="ngModel" name="telephone" placeholder="999-99-99-99"
+                    [(ngModel)]="userService.userSelected.telephone">
+                  <div class="invalid-feedback">
+                    Please enter a valid telephone Number.
+                  </div>
+                </div>
+                <label for="role">Role</label>
+                <div class="dropdown mb-3">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Dropdown button
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </div>
+                </div>
+                <hr class="mb-4">
+                <button class="btn btn-primary btn-lg btn-block" type="submit">Create User</button>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <!-- end content-->
+    </div>
   </div>
 </div>
+
+<!--
 <div *ngIf="!userService.userSelected.firstConnect">
   <p>here we will put a form to create users</p>
-</div>
+</div> -->

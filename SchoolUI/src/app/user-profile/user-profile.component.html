@@ -9,7 +9,7 @@
     </div>
 
     <div class="row">
-      <div class="col-md-8 order-md-1">
+      <div class="col-md-8 order-md-2">
         <form #profileForm="ngForm" (ngSubmit)="onSubmit(profileForm)" class="needs-validation" novalidate>
           <div class="row">
               <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="userService.userSelected._id">
@@ -136,6 +136,8 @@
         </form>
       
       </div>
+      <div class="col-md-2 order-md-1">this is just a place holder</div>
+      <div class="col-md-2 order-md-3">this is just a place holder</div>
     </div>
 
     <footer class="my-5 pt-5 text-muted text-center text-small">
